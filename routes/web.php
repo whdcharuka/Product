@@ -19,7 +19,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [ProductController::class, "index"]) ->name('product');
 Route::get('/', [HomeController::class, "index"]) ->name('home');
 
-//Product 
+//Product
 Route::prefix('/product') ->group(function (){
     Route::get('/', [ProductController::class, "index"]) ->name('product');
     Route::post('/store', [ProductController::class, "store"]) ->name('product.store');
@@ -28,6 +28,3 @@ Route::prefix('/product') ->group(function (){
     Route::get('/{task_id}/view', [ProductController::class, "view"]) ->name('product.view');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');

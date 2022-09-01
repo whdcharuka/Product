@@ -173,4 +173,5 @@
                     min-height: 100vh;
                 }
             </style>
+
         @endpush

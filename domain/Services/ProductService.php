@@ -1,39 +1,39 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace domain\Services;
 
 use App\Models\Product;
-use domain\Facades\ProductFacade;
-use Illuminate\Http\Request;
 
-class ProductController extends ParentController
+class ProductService
 {
-    public function index()
+    protected $task;
+
+    public function __construct()
     {
-        $response['tasks'] = Product::all();
-        return view('pages.product.index')->with($response);
+        $this->task = new Product();
     }
 
-    public function store(Request $request)
+    public function index()
     {
-        $this->task->create($requuest->all());
-        return redirect()->back();
+        return $this->task->all();
+    }
+
+    public function store($data)
+    {
+        $this->task->store($data);
     }
 
     public function delete($task_id)
     {
         $task = $this->task->find($task_id);
         $task->delete();
-        return redirect()->back();
     }
 
     public function update($task_id)
     {
         $task = $this->task->find($task_id);
-        $task->status = 1;
+        $task->update = 1;
         $task->update();
-
-        return redirect()->back();
     }
 
     public function view($task_id)
